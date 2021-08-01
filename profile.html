@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chartcter Profile</title>
+        <style>
+            * {
+                margin: 0;
+                text-decoration: none;
+                list-style: none;
+                padding: 0;
+                font-family: sans-serif;
+            }
+            :root {
+                font-size: 62.5%;
+            }
+            body {
+                background-image: url("./images/home.jpg");
+                background-size: cover;
+            }
+            #main {
+                margin: auto;
+                width: 50%;
+                text-align: center;
+                padding: 25rem 0rem 0rem;
+                font-size: 3rem;
+                color: #ffe81f;
+            }
+            #main > div{
+                border: 0.5rem solid #ffe81f;
+                width: 40%;
+                margin: 3rem auto;
+                padding: 2rem;
+                border-radius: 2rem;
+                font-weight: 600;
+            }
+            button{
+                font-size: 3rem;
+                color:#ffe81f ;
+                background-color: transparent;
+                border: 0.5rem solid #ffe81f;
+                padding: 1rem 2rem;
+                border-radius: 1rem;
+                cursor: pointer;
+                font-weight: 600;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main"></div>
+        <div style="display: flex; justify-content: center;"><button onclick="backToHome()">Home</button></div>
+    </body>
+</html>
+<script>
+    let main_div = document.getElementById("main");
+
+    function showProfile(){
+        main_div.innerHTML = null;
+
+        let data = JSON.parse(localStorage.getItem("profile"));
+
+        let h1 = document.createElement("h1");
+        h1.innerText = `${data.name}`;
+
+        let detail_div = document.createElement("div");
+
+        let gender = document.createElement("p");
+        gender.innerText = `Gender : ${data.gender}`;
+
+        let birth = document.createElement("p");
+        birth.innerText = `Birth Year : ${data.birth_year}`;
+
+        let ht = document.createElement("p");
+        ht.innerText = `Height  : ${data.height}`;
+
+        let masS = document.createElement("p");
+        masS.innerText = `Mass  : ${data.mass}`;
+
+        let skinColor= document.createElement("p");
+        skinColor.innerText = `Skin Color  : ${data.skin_color}`;
+
+
+        detail_div.append(gender, birth, ht, masS, skinColor);
+
+        main_div.append(h1,detail_div);
+
+    }
+    showProfile();
+
+    function backToHome(){
+        window.location.href = "starWarCharApp.html";
+    }
+</script>
